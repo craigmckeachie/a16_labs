@@ -41,6 +41,20 @@ export class ProjectService {
     );
   }
 
+  listByName(name: string): Observable<Project[]> {
+    if (!name.trim()) {
+      // if no name was provided, list all
+      return this.list();
+    }
+    const url = `${this.projectsUrl}?name_like=${name}`;
+    return this.http.get<Project[]>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError('An error occured searching the projects.');
+      })
+    );
+  }
+
   put(project: Project): Observable<Project> {
     const url = this.projectsUrl + project.id;
     return this.http.put<Project>(url, project, httpOptions).pipe(
