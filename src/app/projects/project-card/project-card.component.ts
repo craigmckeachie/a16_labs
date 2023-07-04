@@ -13,4 +13,9 @@ export class ProjectCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onEditClick(project: Project, event: Event) {
+    event.preventDefault();
+    console.log(project);
+  }
 }
