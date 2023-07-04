@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Project } from './project.model';
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -22,6 +22,7 @@ export class ProjectService {
 
   list(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectsUrl).pipe(
+      // delay(2000),
       catchError((error: HttpErrorResponse) => {
         console.log(error);
         return throwError('An error occurred loading the projects.');

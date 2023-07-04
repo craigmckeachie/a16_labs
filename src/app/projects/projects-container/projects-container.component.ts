@@ -11,14 +11,19 @@ import { ProjectService } from '../shared/project.service';
 export class ProjectsContainerComponent implements OnInit {
   projects: Project[] = [];
   errorMessage: string = '';
+  loading: boolean = false;
+
   constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.projectService.list().subscribe(
       (data) => {
+        this.loading = false;
         this.projects = data;
       },
       (error) => {
+        this.loading = false;
         this.errorMessage = error;
       }
     );
