@@ -18,4 +18,8 @@ export class ProjectListComponent implements OnInit {
     this.editingProject = event.editingProject;
     console.log(this.editingProject);
   }
+
+  onCancel() {
+    this.editingProject = null;
+  }
 }
