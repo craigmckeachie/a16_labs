@@ -12,6 +12,9 @@ export class ProjectFormComponent implements OnInit {
   project!: Project;
 
   @Output()
+  save = new EventEmitter<any>();
+
+  @Output()
   cancel = new EventEmitter<void>();
 
   projectForm: FormGroup = new FormGroup({});
@@ -25,6 +28,20 @@ export class ProjectFormComponent implements OnInit {
       budget: new FormControl(this.project.budget),
       isActive: new FormControl(this.project.isActive),
     });
+  }
+
+  onSubmit() {
+    if (this.projectForm.invalid) {
+      return;
+    }
+
+    const updatedProject = Object.assign(
+      {},
+      this.project,
+      this.projectForm.value
+    );
+
+    this.save.emit({ project: updatedProject });
   }
 
   onCancelClick(event: Event) {

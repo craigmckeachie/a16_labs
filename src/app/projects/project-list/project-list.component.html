@@ -9,6 +9,7 @@
       [project]="project"
       *ngIf="project === editingProject"
       (cancel)="onCancel()"
+      (save)="onSave($event)"
     ></app-project-form>
   </div>
 </div>
