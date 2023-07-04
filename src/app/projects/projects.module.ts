@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ProjectDetailContainerComponent } from './project-detail-container/project-detail-container.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,12 @@ import { ProjectDetailContainerComponent } from './project-detail-container/proj
     ProjectDetailComponent,
     ProjectDetailContainerComponent,
   ],
-  imports: [CommonModule, ProjectsRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ProjectsRoutingModule,
+    ReactiveFormsModule,
+    SharedModule,
+  ],
   exports: [ProjectsContainerComponent],
 })
 export class ProjectsModule {}
