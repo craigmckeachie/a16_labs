@@ -6,6 +6,14 @@ body,
   height: 100%;
 }
 
+header {
+  height: 5.1875rem;
+}
+
+a.button.active {
+  border: 1px solid var(--fore-color);
+}
+
 .center-page {
   display: flex;
   justify-content: center;

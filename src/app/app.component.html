@@ -1,1 +1,19 @@
-<app-projects-container></app-projects-container>
+<header class="sticky">
+  <a [routerLink]="['./home']" class="logo">
+    <img src="../assets/logo-3.svg" alt="logo" width="49" height="99" />
+  </a>
+  <a [routerLink]="['./home']" class="button rounded" routerLinkActive="active">
+    <span class="icon-home"></span>
+    Home
+  </a>
+  <a
+    [routerLink]="['./projects']"
+    class="button rounded"
+    routerLinkActive="active"
+  >
+    Projects
+  </a>
+</header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
