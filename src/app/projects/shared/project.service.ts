@@ -32,6 +32,12 @@ export class ProjectService {
   }
 
   list(): Observable<Project[]> {
+    // const authToken = localStorage.getItem('auth_token');
+    // const headers = new HttpHeaders({
+    //   Authorization: `Bearer ${authToken}`,
+    //   'Content-Type': 'application/json',
+    // });
+    // return this.http.get<Project[]>(this.projectsUrl, { headers }).pipe(
     return this.http.get<Project[]>(this.projectsUrl).pipe(
       // delay(2000),
       catchError((error: HttpErrorResponse) => {

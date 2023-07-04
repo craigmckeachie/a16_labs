@@ -1,0 +1,17 @@
+<span style="float: right; margin-right: 120px; margin-top: 30px">
+  <span class="icon-user"></span>
+  <a
+    *ngIf="!isSignedIn; else signedOut"
+    [routerLink]="['/signin']"
+    routerLinkActive="active"
+    class=""
+  >
+    Sign In
+  </a>
+
+  <ng-template #signedOut>
+    <span class="">Hello, {{ authenticatedUser.name }}</span>
+    &nbsp;&nbsp;
+    <a (click)="signout($event)"> Sign Out </a>
+  </ng-template>
+</span>
