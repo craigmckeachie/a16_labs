@@ -9,7 +9,13 @@ import { Project } from '../shared/project.model';
 export class ProjectListComponent implements OnInit {
   @Input()
   projects: Project[] = [];
+  editingProject: Project | null = null;
   constructor() {}
 
   ngOnInit(): void {}
+
+  onEdit(event: any) {
+    this.editingProject = event.editingProject;
+    console.log(this.editingProject);
+  }
 }
