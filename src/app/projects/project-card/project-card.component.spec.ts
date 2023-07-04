@@ -20,7 +20,7 @@ describe('ProjectCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProjectCardComponent);
     component = fixture.componentInstance;
-    component.project = new Project(
+    (component.project = new Project(
       1,
       'Mission Impossible',
       'This is really difficult.',
@@ -30,8 +30,8 @@ describe('ProjectCardComponent', () => {
       30100,
       true,
       false
-    );
-    fixture.detectChanges();
+    )),
+      fixture.detectChanges();
   });
 
   it('should create', () => {
