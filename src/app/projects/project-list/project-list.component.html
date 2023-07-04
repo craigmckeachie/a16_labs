@@ -3,7 +3,8 @@
     <app-project-card
       [project]="project"
       (edit)="onEdit($event)"
+      *ngIf="project !== editingProject"
     ></app-project-card>
-    <app-project-form></app-project-form>
+    <app-project-form *ngIf="project === editingProject"></app-project-form>
   </div>
 </div>
