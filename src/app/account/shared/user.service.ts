@@ -19,7 +19,7 @@ export class UserService {
 
   get authenticatedUser() {
     let payload = new JwtHelperService().decodeToken(
-      UserService.authorizationToken
+      UserService.authorizationToken || ''
     );
     return payload;
   }
