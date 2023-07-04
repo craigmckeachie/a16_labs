@@ -18,7 +18,18 @@ const httpOptions = {
 })
 export class ProjectService {
   private projectsUrl = environment.backendUrl + '/projects/';
+
   constructor(private http: HttpClient) {}
+
+  find(id: number): Observable<Project> {
+    const url = this.projectsUrl + id;
+    return this.http.get<Project>(url).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError('An error occurred loading the project.');
+      })
+    );
+  }
 
   list(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectsUrl).pipe(
