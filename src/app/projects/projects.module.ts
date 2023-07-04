@@ -6,10 +6,16 @@ import { ProjectsContainerComponent } from './projects-container/projects-contai
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ProjectsContainerComponent, ProjectListComponent, ProjectCardComponent, ProjectFormComponent],
-  imports: [CommonModule, ProjectsRoutingModule],
+  declarations: [
+    ProjectsContainerComponent,
+    ProjectListComponent,
+    ProjectCardComponent,
+    ProjectFormComponent,
+  ],
+  imports: [CommonModule, ProjectsRoutingModule, ReactiveFormsModule],
   exports: [ProjectsContainerComponent],
 })
 export class ProjectsModule {}

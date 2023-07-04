@@ -6,6 +6,7 @@
       *ngIf="project !== editingProject"
     ></app-project-card>
     <app-project-form
+      [project]="project"
       *ngIf="project === editingProject"
       (cancel)="onCancel()"
     ></app-project-form>
