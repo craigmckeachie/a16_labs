@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MOCK_PROJECTS } from './mock-projects';
 import { Project } from './project.model';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,11 @@ export class ProjectService {
   constructor(private http: HttpClient) {}
 
   list(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.projectsUrl);
+    return this.http.get<Project[]>(this.projectsUrl).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.log(error);
+        return throwError('An error occurred loading the projects.');
+      })
+    );
   }
 }
