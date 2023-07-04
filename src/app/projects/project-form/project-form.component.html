@@ -3,13 +3,26 @@
   class="input-group vertical"
   (submit)="onSubmit()"
 >
-  <label for="name">Project Name</label>
+  <label for="name" [class.invalid]="projectForm.get('name')?.invalid"
+    >Project Name</label
+  >
   <input
     type="text"
     name="name"
     placeholder="enter name"
     formControlName="name"
   />
+  <div *ngIf="projectForm.get('name')?.hasError('required')" class="card error">
+    <p>Name is required.</p>
+  </div>
+
+  <div
+    *ngIf="projectForm.get('name')?.hasError('minlength')"
+    class="card error"
+  >
+    <p>Name must be at least 3 characters long.</p>
+  </div>
+
   <label for="description">Project Description</label>
 
   <textarea

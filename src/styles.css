@@ -1,1 +1,10 @@
 @import '~mini.css/dist/mini-default.min.css';
+
+input.ng-invalid {
+  border-color: var(--input-invalid-color);
+  box-shadow: none;
+}
+
+label.invalid {
+  color: var(--input-invalid-color);
+}

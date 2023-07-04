@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Project } from '../shared/project.model';
 
 @Component({
@@ -23,7 +23,10 @@ export class ProjectFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectForm = new FormGroup({
-      name: new FormControl(this.project.name),
+      name: new FormControl(this.project.name, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
       description: new FormControl(this.project.description),
       budget: new FormControl(this.project.budget),
       isActive: new FormControl(this.project.isActive),
